@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Display Webcam | Stream</title>
+    <title>YADHU'S Webcam | Stream</title>
+    <link rel="shortcut icon" href="https://t4.ftcdn.net/jpg/04/06/92/17/360_F_406921774_w48dWkIrsixpA2tcqJCB1Z3ULWxw0uLm.jpg">
 
     <style>
         h1{
@@ -40,7 +41,13 @@
         let video = document.querySelector("#videoElement");
 
         if(navigator.mediaDevices.getUserMedia){
-            
+            navigator.mediaDevices.getUserMedia({ video: true})
+            .then(function(stream){
+                video.srcObject = stream;
+            })
+            .catch(function(error){
+                console.log("Something went wrong");
+            })
         }else{
             console.log("getUserMedia not supported!");
         }
